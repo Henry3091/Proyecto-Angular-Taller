@@ -1,0 +1,24 @@
+<!-- Formulario para agregar producto -->
+<h2>Agregar nuevo producto</h2>
+<form (ngSubmit)="crearProducto()">
+  <input [(ngModel)]="nuevoProducto.nombre" name="nombre" placeholder="Nombre" required>
+  <input [(ngModel)]="nuevoProducto.descripcion" name="descripcion" placeholder="Descripción" required>
+  <input type="number" [(ngModel)]="nuevoProducto.precio" name="precio" placeholder="Precio" required>
+  <input [(ngModel)]="nuevoProducto.imagen" name="imagen" placeholder="URL de imagen" required>
+  <button type="submit">Agregar</button>
+</form>
+
+<hr>
+
+<!-- Lista de productos -->
+<h2>Lista de productos</h2>
+<div class="galeria">
+  <div *ngFor="let producto of productos" class="card">
+    <img [src]="producto.imagen" alt="{{ producto.nombre }}">
+    <h3>{{ producto.nombre }}</h3>
+    <p>{{ producto.descripcion }}</p>
+    <p><strong>${{ producto.precio }}</strong></p>
+    <button (click)="actualizarProducto(producto)">Editar</button>
+    <button (click)="eliminarProducto(producto.id!)">Eliminar</button>
+  </div>
+</div>
